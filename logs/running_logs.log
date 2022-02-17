@@ -1,0 +1,18 @@
+[2022-02-17 16:59:31,068: INFO: 01_base_model]: 
+********************
+[2022-02-17 16:59:31,068: INFO: 01_base_model]: >>>>> stage base_model started <<<<<
+[2022-02-17 16:59:31,069: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-02-17 16:59:31,069: INFO: 01_base_model]: >>>>> stage base_model completed!<<<<<
+
+[2022-02-17 17:00:24,894: INFO: 01_base_model]: 
+********************
+[2022-02-17 17:00:24,894: INFO: 01_base_model]: >>>>> stage base_model started <<<<<
+[2022-02-17 17:00:24,910: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-02-17 17:00:24,910: INFO: 01_base_model]: >>>>> stage base_model completed!<<<<<
+
+[2022-02-17 17:03:25,178: INFO: 01_base_model]: 
+********************
+[2022-02-17 17:03:25,178: INFO: 01_base_model]: >>>>> stage base_model started <<<<<
+[2022-02-17 17:03:25,178: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-02-17 17:03:27,635: INFO: 01_base_model]: >>>>> stage base_model completed!<<<<<
+
