@@ -73,7 +73,7 @@ def main(config_path):
         return summary_str
 
     # model.summary()
-    logging.info(f"base model summary: \n{_log_model_summary(model)}")
+    logging.info(f"{STAGE} model summary: \n{_log_model_summary(model)}")
 
     # train the model
     history = model.fit(x_train, y_train, 
