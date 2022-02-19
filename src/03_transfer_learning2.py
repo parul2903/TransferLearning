@@ -1,4 +1,4 @@
-## this model will predict whether the no. is odd or even
+## this model will predict whether the no. is greater than 5 or less than 5
 
 import argparse
 import os
@@ -12,7 +12,7 @@ import tensorflow as tf
 import io
 
 
-STAGE = "transfer learning" ## <<< change stage name 
+STAGE = "transfer learning 2" ## <<< change stage name 
 
 logging.basicConfig(
     filename = os.path.join("logs", 'running_logs.log'), 
@@ -23,10 +23,10 @@ logging.basicConfig(
 
 """enumerate() allows us to iterate through a sequence but it keeps track of both the index and the element. 
 The enumerate() function takes in an iterable as an argument, such as a list, string, tuple, or dictionary."""
-def update_even_odd_labels(list_of_labels):
+def update_greater_than_less_than_5_labels(list_of_labels):
     for idx, label in enumerate(list_of_labels):
-        even_condition = (label%2 == 0)
-        list_of_labels[idx] = np.where(even_condition, 1, 0)
+        condition = (label >= 5)
+        list_of_labels[idx] = np.where(condition, 1, 0)
 
     return list_of_labels
 
@@ -44,7 +44,7 @@ def main(config_path):
     x_valid, x_train = x_train_full[:5000], x_train_full[5000:]
     y_valid, y_train = y_train_full[:5000], y_train_full[5000:]
 
-    y_train_bin, y_test_bin, y_valid_bin = update_even_odd_labels([y_train, y_test, y_valid])
+    y_train_bin2, y_test_bin2, y_valid_bin2 = update_greater_than_less_than_5_labels([y_train, y_test, y_valid])
 
     # set the seed value
     seed = 2022 ## get it from config
@@ -89,13 +89,13 @@ def main(config_path):
     # modify the last layer
     # define the model and compile it 
     base_layer = base_model.layers[:-1]
-    new_model = tf.keras.models.Sequential(base_layer)
-    new_model.add(
+    new_model2 = tf.keras.models.Sequential(base_layer)
+    new_model2.add(
         tf.keras.layers.Dense(2, activation = 'softmax', name = 'OutputLayer')
     )
 
     # logging the model summary
-    logging.info(f"{STAGE} model summary: \n{_log_model_summary(new_model)}")
+    logging.info(f"{STAGE} model summary: \n{_log_model_summary(new_model2)}")
 
     """so, now we can observe in the logs that there are only 202 trainable paraameters
     because rest of the weights are freezed. This will make our training faster."""
@@ -104,24 +104,24 @@ def main(config_path):
     LOSS = tf.losses.sparse_categorical_crossentropy
     OPTIMIZER = tf.keras.optimizers.SGD(learning_rate = 1e-3) # 10^(-7)
     METRICS = ["accuracy"]
-    new_model.compile(loss = LOSS, optimizer = OPTIMIZER, metrics = METRICS)
+    new_model2.compile(loss = LOSS, optimizer = OPTIMIZER, metrics = METRICS)
 
     
     # train the model
-    history = new_model.fit(x_train, y_train_bin, 
+    history = new_model2.fit(x_train, y_train_bin2, 
                         epochs = 10, 
-                        validation_data = (x_valid, y_valid_bin),
+                        validation_data = (x_valid, y_valid_bin2),
                         verbose = 2)
 
     # save the base model
     model_dir_path = os.path.join("artifacts", "models")
 
-    model_file_path = os.path.join(model_dir_path, "even_odd_model.h5")
-    new_model.save(model_file_path)
+    model_file_path = os.path.join(model_dir_path, "greater_than_5_model.h5")
+    new_model2.save(model_file_path)
 
 
     logging.info(f"base model is saved at {model_file_path}")
-    logging.info(f"evaluation metrics {new_model.evaluate(x_test, y_test_bin)}")
+    logging.info(f"evaluation metrics {new_model2.evaluate(x_test, y_test_bin2)}")
 
 
 if __name__ == '__main__':
@@ -137,5 +137,3 @@ if __name__ == '__main__':
     except Exception as e:
         logging.exception(e)
         raise e
-
-    

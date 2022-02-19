@@ -53,3 +53,107 @@ _________________________________________________________________
 [2022-02-19 23:37:45,211: INFO: 02_transfer_learning_even_odd]: evaluation metrics [0.27945196628570557, 0.8876000046730042]
 [2022-02-19 23:37:45,281: INFO: 02_transfer_learning_even_odd]: >>>>> stage transfer learning completed!<<<<<
 
+[2022-02-19 23:56:57,998: INFO: 03_transfer_learning2]: 
+********************
+[2022-02-19 23:56:57,998: INFO: 03_transfer_learning2]: >>>>> stage transfer learning 2 started <<<<<
+[2022-02-19 23:56:57,998: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-02-19 23:56:58,939: INFO: 03_transfer_learning2]: loaded base model summary: 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ InputLayer (Flatten)        (None, 784)               0         
+                                                                 
+ HiddenLayer1 (Dense)        (None, 300)               235500    
+                                                                 
+ leaky_re_lu (LeakyReLU)     (None, 300)               0         
+                                                                 
+ HiddenLayer2 (Dense)        (None, 100)               30100     
+                                                                 
+ leaky_re_lu_1 (LeakyReLU)   (None, 100)               0         
+                                                                 
+ OutputLayer (Dense)         (None, 10)                1010      
+                                                                 
+=================================================================
+Total params: 266,610
+Trainable params: 266,610
+Non-trainable params: 0
+_________________________________________________________________
+
+[2022-02-19 23:56:59,005: INFO: 03_transfer_learning2]: transfer learning 2 model summary: 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ InputLayer (Flatten)        (None, 784)               0         
+                                                                 
+ HiddenLayer1 (Dense)        (None, 300)               235500    
+                                                                 
+ leaky_re_lu (LeakyReLU)     (None, 300)               0         
+                                                                 
+ HiddenLayer2 (Dense)        (None, 100)               30100     
+                                                                 
+ leaky_re_lu_1 (LeakyReLU)   (None, 100)               0         
+                                                                 
+ OutputLayer (Dense)         (None, 2)                 202       
+                                                                 
+=================================================================
+Total params: 265,802
+Trainable params: 202
+Non-trainable params: 265,600
+_________________________________________________________________
+
+[2022-02-19 23:57:26,570: INFO: 03_transfer_learning2]: 
+********************
+[2022-02-19 23:57:26,570: INFO: 03_transfer_learning2]: >>>>> stage transfer learning 2 started <<<<<
+[2022-02-19 23:57:26,570: INFO: common]: yaml file: configs/config.yaml loaded successfully
+[2022-02-19 23:57:27,583: INFO: 03_transfer_learning2]: loaded base model summary: 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ InputLayer (Flatten)        (None, 784)               0         
+                                                                 
+ HiddenLayer1 (Dense)        (None, 300)               235500    
+                                                                 
+ leaky_re_lu (LeakyReLU)     (None, 300)               0         
+                                                                 
+ HiddenLayer2 (Dense)        (None, 100)               30100     
+                                                                 
+ leaky_re_lu_1 (LeakyReLU)   (None, 100)               0         
+                                                                 
+ OutputLayer (Dense)         (None, 10)                1010      
+                                                                 
+=================================================================
+Total params: 266,610
+Trainable params: 266,610
+Non-trainable params: 0
+_________________________________________________________________
+
+[2022-02-19 23:57:27,654: INFO: 03_transfer_learning2]: transfer learning 2 model summary: 
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ InputLayer (Flatten)        (None, 784)               0         
+                                                                 
+ HiddenLayer1 (Dense)        (None, 300)               235500    
+                                                                 
+ leaky_re_lu (LeakyReLU)     (None, 300)               0         
+                                                                 
+ HiddenLayer2 (Dense)        (None, 100)               30100     
+                                                                 
+ leaky_re_lu_1 (LeakyReLU)   (None, 100)               0         
+                                                                 
+ OutputLayer (Dense)         (None, 2)                 202       
+                                                                 
+=================================================================
+Total params: 265,802
+Trainable params: 202
+Non-trainable params: 265,600
+_________________________________________________________________
+
+[2022-02-19 23:57:57,398: INFO: 03_transfer_learning2]: base model is saved at artifacts\models\greater_than_5_model.h5
+[2022-02-19 23:57:58,144: INFO: 03_transfer_learning2]: evaluation metrics [0.3578609526157379, 0.8519999980926514]
+[2022-02-19 23:57:58,190: INFO: 03_transfer_learning2]: >>>>> stage transfer learning 2 completed!<<<<<
+

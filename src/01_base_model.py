@@ -1,3 +1,5 @@
+## this model will predict the no. from 0-9 provided as an image
+
 import argparse
 import os
 import shutil
