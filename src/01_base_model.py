@@ -7,6 +7,8 @@ import logging
 from src.utils.common import read_yaml, create_directories
 import random
 import tensorflow as tf
+import io
+
 
 
 STAGE = "base_model" ## <<< change stage name 
@@ -54,8 +56,24 @@ def main(config_path):
     METRICS = ["accuracy"]
     model.compile(loss = LOSS, optimizer = OPTIMIZER, metrics = METRICS)
 
-    # summary of model 
-    model.summary()
+    # logging the model summary information inside the logs
+ 
+    """StringIO(): The StringIO module is an in-memory file-like object. 
+    This object can be used as input or output to the most function that would expect 
+    a standard file object. When the StringIO object is created it is initialized by 
+    passing a string to the constructor. """
+
+    def _log_model_summary(model):
+        with io.StringIO() as stream:
+            # default print_fn is None which means that the summary will be printed on the terminal
+            # if we want to print the summary in logs, we use StringIO()
+            model.summary(print_fn = lambda x: stream.write(f"{x}\n"))
+            summary_str = stream.getvalue()
+
+        return summary_str
+
+    # model.summary()
+    logging.info(f"base model summary: \n{_log_model_summary(model)}")
 
     # train the model
     history = model.fit(x_train, y_train, 
